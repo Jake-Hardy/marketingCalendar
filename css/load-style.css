@@ -1,0 +1,130 @@
+/* TODO: find an alternative to display: table-cell for card design. It acts goofy with
+         the height property, it isn't affected by margin, it's just an all-around bad
+         method of doing this. */
+.container--card {
+    max-width: 80%;
+    margin: 1rem 10%;
+
+    /*display: table-cell;
+    table-layout: fixed;*/
+}
+
+
+.card--calendar {
+    width: 100%;
+    height: 250px;
+    margin: .84rem;
+    padding: 1rem;
+    /*padding-bottom: calc( 2rem * 2 + .6rem);*/
+
+    /*display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    position: relative;*/
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    transition: all 1.5s;
+    transition: transform .3s;
+}
+
+.card--calendar:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.card--calendar__text {
+    display: inline-block;
+    width: 100%;
+
+    text-align: center;
+}
+
+.card--header {
+    margin: .3rem auto;
+    font-weight: normal;
+}
+
+.card--details {
+    color: #cdcdcd;
+    font-size: .7rem;
+}
+
+/*.button--edit {
+    width: 90%;
+
+    display: inline-block;
+
+    position: absolute;
+    bottom: 2.4rem;
+    left: 5%;
+}
+
+.button--delete {
+    width: 90%;
+
+    display: inline-block;
+
+    position: absolute;
+    bottom: .2rem;
+    left: 5%;
+}*/
+
+.card--wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.card--wrapper__button {
+    justify-content: space-around;
+}
+
+.card--button {
+    width: 100%;
+    margin-top: .2rem;
+}
+
+.share-window {
+    width: 40vw;
+    height: 20vh;
+
+    margin-top: -10vh;
+    margin-left: -20vw;
+
+    padding: 1rem;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    background-color: white;
+    z-index: 11;
+    opacity: 1;
+}
+
+.cardSpinner {
+    width: 22%;
+    margin: .3rem .75rem;
+
+    display: inline-block;
+}
+
+.spin {
+    -webkit-animation: spin 2s forwards;
+            animation: spin 2s forwards;
+}
+
+.shrink {
+    -webkit-animation: shrink 1s forwards;
+            animation: shrink 1s forwards;
+}
+
+@-webkit-keyframes spin {
+    from {  }
+    to { transform: rotateX(360deg); }
+}
+@keyframes shrink {
+    from {  }
+    to { transform: scale(0,0); }
+}

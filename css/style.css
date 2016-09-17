@@ -1,0 +1,563 @@
+@keyframes pulse {
+    0%   {background-color: #ffffff;}
+    50%  {background-color: #cdcdcd;}
+    100% {background-color: #ffffff;}
+}
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/* --------------------------- Base styles ---------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/* --------------------------- Element styles ------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+.shadow-box {
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background-color: #333;
+    opacity: 0.5;
+    z-index: 10;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/* --------------------------- Header styles -------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+.header {
+    width: 100%;
+    height: 2rem;
+
+    margin-top: 0;
+
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+    -webkit-flex-direction: row;
+            flex-direction: row;
+    -webkit-align-items: stretch;
+            align-items: stretch;
+
+    background-color: #01BAEF;
+    font-family: 'Poiret One', cursive;
+}
+
+.calendar-options,
+.header--nav {
+    padding: 0;
+}
+
+.header--nav {
+    margin: 0;
+    margin-left: auto;
+
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: flex-end;
+            justify-content: flex-end;
+    -webkit-flex-direction: row;
+            flex-direction: row;
+    -webkit-align-items: stretch;
+            align-items: stretch;
+}
+
+.nav--item {
+    padding: .4rem .6rem;
+
+    color: white;
+    cursor: pointer;
+
+    transition: all .5s;
+}
+
+.nav--item:hover {
+    background-color: #083D77;
+    border-bottom: 5px solid #4CAD55;
+    /*color: #4CAD55;*/
+}
+
+.nav--item:active {
+    transition: all .1s;
+    background-color: #041A0D;
+    border: 0;
+    color: #041A0D;
+}
+
+.calendar-options {
+    margin: 0;
+
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: flex-start;
+            justify-content: flex-start;
+    -webkit-flex-direction: row;
+            flex-direction: row;
+    -webkit-align-items: stretch;
+            align-items: stretch;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/* --------------------------- Calendar element styles ---------------------- */
+/* -------------------------------------------------------------------------- */
+
+.container {
+    width: 100%;
+    margin-bottom: 5rem;
+
+    position: relative;
+
+    /*left: 5%;*/
+    /*top: 0;*/
+    /*bottom: 2.5rem;*/
+    /*overflow-y: scroll;*/
+    overflow-x: hidden;
+
+    transition: top 1s;
+}
+
+.container--form__login,
+.container--calendar-options {
+    width: 40vw;
+    height: 20vh;
+
+    margin-top: -10vh;
+    margin-left: -20vw;
+
+    padding: 1rem;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    background-color: white;
+    z-index: 11;
+    opacity: 1;
+}
+
+.container--calendar-options__shadowbox {
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background-color: #333;
+    opacity: 0.5;
+    z-index: 10;
+}
+
+/* Padding rule removes margin collapsing on header */
+.calendar {
+    width: 90%;
+    margin: 2rem 5% 5rem 5%;
+    padding: 1rem;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #cdcdcd;
+    /*position: relative;*/
+}
+
+.calendar--title {
+    width: 100%;
+    margin: 1rem auto;
+    padding: .5rem;
+
+    /*position: absolute;*/
+    text-align: center;
+}
+
+.calendar--title__text {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.box {
+    border: 1px solid #cdcdcd;
+}
+
+.box__shadow {
+    box-shadow: 3px 3px 8px #cdcdcd;
+}
+
+.cells3 {
+    width: calc(100% / 4);
+}
+
+.cells12 {
+    width: calc(100% / 13);
+}
+
+div[class*="row_"] {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+    flex: 1;
+}
+
+div[class*="row_"]:first-child {
+    height: 100px;
+}
+
+div[class*="row_"] > div {
+	height: 100px;
+    margin: 0;
+
+    display: table;
+    /*display: flex;*/
+    float: left;
+
+    text-align: center;
+    font-size: .5rem;
+    white-space: pre-wrap;
+
+    /*overflow: hidden;*/
+}
+
+/*div[class*="cell_"] {
+    display: flex;
+    /*flex-direction: column;
+    flex-grow: 1;
+}*/
+
+.row_0 div[class*="cell_"] {
+    height: 50px;
+}
+
+div[class*="cell_"] p {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.calendar div[class*="row_"]:nth-child(3) div[class*="cell_"] p {
+    color: blue;
+}
+
+.calendar div[class*="row_"]:nth-child(4) div[class*="cell_"] p {
+    color: chocolate;
+}
+
+.calendar div[class*="row_"]:nth-child(5) div[class*="cell_"] p {
+    color: turquoise;
+}
+
+.calendar div[class*="row_"]:nth-child(6) div[class*="cell_"] p {
+    color: firebrick;
+}
+
+.calendar div[class*="row_"]:nth-child(7) div[class*="cell_"] p {
+    color: orange;
+}
+
+.calendar div[class*="row_"]:nth-child(8) div[class*="cell_"] p {
+    color: DarkMagenta;
+}
+
+.calendar div[class*="row_"]:nth-child(9) div[class*="cell_"] p {
+    color: DarkTurquoise;
+}
+
+.calendar div[class*="row_"]:nth-child(10) div[class*="cell_"] p {
+    color: Gold;
+}
+
+.calendar div[class*="row_"]:nth-child(11) div[class*="cell_"] p {
+    color: Khaki;
+}
+
+.editable {
+    background-color: white;
+    transition: all 1s ease-in-out;
+}
+
+.col_header {
+    background-color: #efefef;
+}
+
+.editing {
+    /*animation: pulse 2s infinite;*/
+
+    background-color: #01BAEF;
+}
+
+/*.menu__button {
+    width: 2.5rem;
+    position: fixed;
+
+    font-size: 2rem;
+    color: white;
+    background-color: #01BAEF;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 100%;
+
+    left: 48%;
+
+    transition: bottom 1s;
+}*/
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/* --------------------------- Menu element styles -------------------------- */
+/* -------------------------------------------------------------------------- */
+
+.button {
+    height: 2rem;
+    line-height: 2rem;
+    padding: 0 .6rem;
+
+    display: inline-block;
+
+    color: white;
+    background-color: #01BAEF;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+
+    transition: background-color 1s;
+}
+
+.button--submit {
+    width: 5rem;
+}
+
+.button--close {
+    /*width: 1rem;
+    height: 1rem;*/
+
+    padding: .2rem;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    background-color: firebrick;
+    color: white;
+
+    cursor: pointer;
+}
+
+.menu__button {
+    width: 100%;
+    height: 2.5rem;
+    line-height: 2.5rem;
+
+    display: inline-block;
+    position: fixed;
+    /*left: -15px;*/
+
+    color: white;
+    background-color: #01BAEF;
+    cursor: pointer;
+    text-align: center;
+    /*border-radius: 10px;*/
+
+    transition: background-color 1s,  bottom 1s;
+}
+
+.button:hover,
+.menu__button:hover {
+    background-color: #0087bc;
+}
+
+.button span,
+.menu__button span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.button__register {
+    margin-left: 1rem;
+    border: 0;
+}
+
+.input--text {
+    width: 100%;
+    height: 100%;
+
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.input-container {
+    width: 100%;
+    margin: 1rem auto;
+    margin-top: 1.7rem;
+
+    /*position: fixed;
+    bottom: 0;*/
+}
+
+.menu__fold-up {
+    width: 100%;
+    height: 6rem;
+
+    position: fixed;
+
+    background-color: #454545;
+    color: white;
+
+    transition: bottom 1s;
+}
+
+.open {
+    bottom: 0;
+}
+
+.container.open {
+    top: -6rem;
+}
+
+.closed {
+    /*bottom: -88px;*/
+    bottom: -6rem;
+}
+
+.container.closed {
+    top: 0;
+}
+
+.menu__open {
+    bottom: 6rem;
+}
+
+.menu__closed {
+    bottom: 0px;
+}
+
+.container--input__menu {
+    margin: 0 1rem;
+    display: inline-block;
+    /*padding: 0 30px;*/
+    /*width: 25%;*/
+    /*float: left;*/
+
+    vertical-align: top;
+}
+
+.container--input__button {
+    /*float: right;*/
+}
+
+.container--messages {
+    width: 30%;
+
+    position: relative;
+    left: -100%;
+
+    transition: all .5s;
+}
+
+.menu--nav {
+    width: 100%;
+}
+
+.menu--nav__list-item {
+    /*width: 10%;*/
+    margin: 0 0.3rem 1rem;
+
+    display: inline-block;
+    color: white;
+}
+
+.input__audience {
+    display: block;
+}
+
+.form--item {
+    width: 20%;
+
+    margin: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/* --------------------------- Float Clearfix ------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+.clearfix:after {
+    content:"";
+    display:table;
+    clear:both;
+}
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/* --------------------------- Media Queries -------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+@media print {
+    .container {
+        width: 100%;
+    }
+
+    .calendar {
+        box-shadow: none;
+    }
+
+    .menu__button {
+        display: none;
+    }
+}
