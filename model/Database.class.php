@@ -1,7 +1,7 @@
 <?php
 class Database {
 
-    private static $dsn  = 'mysql:host=localhost;dbname=Marketing-Calendar;charset=utf8';
+    private static $dsn  = 'mysql:host=localhost;dbname=marketing-calendar;charset=utf8';
     private static $user = 'root';
     private static $pass = '';
     private static $db;

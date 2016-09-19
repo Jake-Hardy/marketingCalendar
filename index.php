@@ -3,6 +3,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'functions/users.functions.php';
+require_once 'functions/calendar_storage.php';
 
 if(isset($_POST['action'])) {
     $action = $_POST['action'];
@@ -22,6 +23,7 @@ switch($action) {
     case 'edit':
         $page = 'calendar';
         $id = $_POST['id'];
+        $calendar = getTable($id);
         include 'create-calendar.php';
         break;
     case 'login':

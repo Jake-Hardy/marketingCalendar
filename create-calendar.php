@@ -5,9 +5,15 @@
              are used for CSS selectors, class names that use camelCase are JS
              hooks. Note: I have not done a very good job at sticking to this
              convention. -->
-        <div class="calendar box__shadow clearfix">
-            <div class="calendar--title box editable"><em class="calendar--title__text calendarTitle">Click to edit</em></div>
-        </div>
+        <?php if(isset($calendar)): ?>
+            <div class="calendar box__shadow clearfix">
+                <div class="calendar--title box editable"><em class="calendar--title__text calendarTitle"><?php echo $calendar['title']; ?></em></div>
+            </div>
+        <?php else: ?>
+            <div class="calendar box__shadow clearfix">
+                <div class="calendar--title box editable"><em class="calendar--title__text calendarTitle">Click to edit</em></div>
+            </div>
+        <?php endif; ?>
     </div>
 
     <div class="container--messages"><span class="messages"></span></div>

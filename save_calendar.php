@@ -7,15 +7,17 @@ require_once 'functions/calendar_storage.php';
     $calendar_info['rows']    = $calendar['rows'];
     $calendar_info['cols']    = $calendar['cols'];
     $calendar_info['title']   = $calendar['title'];
-    $calendar_info['owner']   = $calendar['owner'];
+    // $calendar_info['owner']   = $calendar['owner'];
 
     $cells = array_slice($calendar, 4);
-    $statement = tableExists($calendar_info['title'], $calendar_info['owner']);
+    //$statement = tableExists($calendar_info['title'], $calendar_info['owner']);
+    $statement = tableExists($calendar_info['title']);
 
     // If a calendar with the same title and owner does not exist, create a new entry,
     // otherwise update existing calendar
     if($statement->rowCount() > 0) {
-        overwriteCells($statement, $calendar_info, $cells, $owner);
+        //overwriteCells($statement, $calendar_info, $cells, $owner);
+        overwriteCells($statement, $calendar_info, $cells);
     } else {
         saveCalendar($calendar_info, $cells);
     }

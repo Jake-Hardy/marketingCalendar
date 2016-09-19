@@ -1,10 +1,12 @@
 $(document).ready(function() {
-    if ($('.loadFlag').val() === "true") {
-        loadCalendar();
-    }
     $('.container--calendar-options__shadowbox').hide();
     $('.container--calendar-options').hide();
     $('.formLoginContainer').hide();
+
+    //console.log($('.loadFlag').val());
+    if ($('.loadFlag').val() === "true") {
+        loadCalendar();
+    }
 });
 
 $(".buttonOptions").on("click", function() {
@@ -223,12 +225,13 @@ function loadCalendar() {
                 result = $.parseJSON(data);
                 calendarInfo = result[0];
                 cells = result[1];
-                //console.log(cells);
-                //console.log(calendarInfo['Rows']);
-                audienceCount = calendarInfo['Rows'];
+                console.log('test');
+                console.log("Cells: " + cells);
+                console.log("Rows: " + calendarInfo['rows']);
+                audienceCount = calendarInfo['rows'];
 
                 $('.calendar--title').children().hide();
-                $('.calendar--title').children().text(calendarInfo['Title']);
+                $('.calendar--title').children().text(calendarInfo['title']);
                 $('.calendar--title').children().show();
 
                 for (var i = 0; i < audienceCount; i++) {
@@ -244,17 +247,17 @@ function loadCalendar() {
                     for (var cell in cells) {
                         //console.log(cell);
                         //console.log(cells[cell]);
-                        var row = parseInt(cells[cell]['Row']);
+                        var row = parseInt(cells[cell]['row']);
                         //console.log(row);
                         if (row === i) {
-                            var newCell = "<div class='cell_"+cells[cell]['Row']+"_"+cells[cell]['Col']+" editable'><p>"+cells[cell]['Content']+"</p></div>";
-                            var currentCell = ".cell_"+cells[cell]['Row']+"_"+cells[cell]['Col'];
+                            var newCell = "<div class='cell_"+cells[cell]['row']+"_"+cells[cell]['col']+" editable'><p>"+cells[cell]['content']+"</p></div>";
+                            var currentCell = ".cell_"+cells[cell]['row']+"_"+cells[cell]['col'];
                             //console.log(currentCell);
                             $(currentRow).append(newCell)
-                            if (cells[cell]['Row'] === "0" || cells[cell]['Col'] === "0") {
+                            if (cells[cell]['row'] === "0" || cells[cell]['col'] === "0") {
                                 $(currentCell).addClass("col_header");
                             }
-                            if (calendarInfo['Cols'] === "4") {
+                            if (calendarInfo['cols'] === "4") {
                                 $(currentCell).addClass("cells3");
                             }
                             else {

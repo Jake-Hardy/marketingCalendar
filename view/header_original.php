@@ -17,20 +17,33 @@ session_start();
 </head>
 <body>
     <?php if (isset($_POST['id'])): ?>
+        <!-- <input type="hidden" class="idHook" value=<?php echo //$_POST['id']; ?> /> -->
         <input type="hidden" class="idHook" value=<?php echo $_POST['id']; ?> />
         <input type="hidden" class="loadFlag" value="true" />
     <?php endif; ?>
-    <input type="hidden" class="userHook" value="user" />
+    <!-- <?php //if(isset($_SESSION['user'])) : ?> -->
+        <!-- <input type="hidden" class="userHook" value=<?php echo //$_SESSION['user']; ?> /> -->
+        <input type="hidden" class="userHook" value="user" />
+    <!-- <?php //endif; ?> -->
     <div class="header">
         <?php if ($page == 'calendar'): ?>
             <ul class="calendar-options">
                 <li class="nav--item buttonOptions">Calendar Options</li>
                 <li class="nav--item"><a href="index.php?action=create-calendar">New Calendar</a></li>
-                <li class="nav--item buttonSave">Save Calendar</li>
-                <li class="nav--item buttonLoad">Load Calendar</li>
+                <!-- <li class="nav--item buttonLoad"><a href="select_calendar.php">Load Calendar</a></li> -->
+                <!-- <?php //if (isset($_SESSION['user'])) : ?> -->
+                    <li class="nav--item buttonSave">Save Calendar</li>
+                    <li class="nav--item buttonLoad">Load Calendar</li>
+                <!-- <?php //endif; ?> -->
             </ul>
         <?php endif; ?>
         <ul class="header--nav">
             <li class="nav--item"><a href="index.php">Home</a></li>
+            <!-- <?php //if (isset($_SESSION['user'])): ?>
+                <li class="nav--item"><?php echo //$_SESSION['user']; ?></li>
+                <li class="nav--item buttonLogout">Logout</li>
+            <?php //else: ?>
+                <li class="nav--item buttonLogin">Login</li>
+            <?php //endif; ?> -->
         </ul>
     </div>
